@@ -21,7 +21,7 @@ export default function App() {
 
 			</View>
 			<View>
-				{anime.map((movie) => <Text key={movie}>{movie}</Text>)}
+				{anime.map((movie) => <View style={styles.listItem} key={movie}><Text >{movie}</Text></View>)}
 			</View>
 		</View>
 	);
@@ -42,8 +42,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		width: 100,
 		height: 100
+	},
+	listItem: {
+		padding: 10,
+		marginVertical: 10,
+		backgroundColor: '#ccc',
+		borderColor: 'black',
+		borderWidth: 1
 	}
-
 })
 
 
