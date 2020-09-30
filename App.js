@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 
 export default function App() {
 	const [character, setCharacter] = useState('')
@@ -20,9 +20,9 @@ export default function App() {
 				<Button title="ADD" onPress={onPressName} />
 
 			</View>
-			<View>
-				{anime.map((movie) => <View style={styles.listItem} key={movie}><Text >{movie}</Text></View>)}
-			</View>
+			<ScrollView>
+				{anime.map((movie) => <ScrollView style={styles.listItem} key={movie}><Text >{movie}</Text></ScrollView>)}
+			</ScrollView>
 		</View>
 	);
 }
