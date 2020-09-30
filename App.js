@@ -20,6 +20,9 @@ export default function App() {
 				<Button title="ADD" onPress={onPressName} />
 
 			</View>
+			<View>
+				{anime.map((movie) => <Text key={movie}>{movie}</Text>)}
+			</View>
 		</View>
 	);
 }
