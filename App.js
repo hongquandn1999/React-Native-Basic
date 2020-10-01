@@ -1,6 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
+
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View, ScrollView, FlatList } from 'react-native';
+import CharacterItem from './components/CharacterItem'
 
 export default function App() {
 	const [character, setCharacter] = useState('')
@@ -10,19 +11,20 @@ export default function App() {
 	}
 
 	const onPressName = () => {
-		setAnime(currentValue => [...currentValue, character]);
+		setAnime(currentValue => [...currentValue, {
+			id: Math.random().toString(),
+			value: character
+		}]);
 	}
 	return (
 		<View style={styles.screen}>
 			<View style={styles.viewItems}>
 
-				<TextInput placeholder="Input name here" style={styles.inputContainer} onChangeText={nameInputed} />
+				<TextInput placeholder="Input name here" style={styles.inputContainer} onChangeText={nameInputed} value={character} />
 				<Button title="ADD" onPress={onPressName} />
 
 			</View>
-			<FlatList data={anime} renderItem={itemData => (
-				<View style={styles.listItem} key={itemData}><Text >{itemData.item}</Text></View>
-			)} />
+			<FlatList keyExtractor={(item, index) => item.id} data={anime} renderItem={itemData => <CharacterItem title={itemData.item.value} />} />
 
 
 		</View>
@@ -45,13 +47,7 @@ const styles = StyleSheet.create({
 		width: 100,
 		height: 100
 	},
-	listItem: {
-		padding: 10,
-		marginVertical: 10,
-		backgroundColor: '#ccc',
-		borderColor: 'black',
-		borderWidth: 1
-	}
+
 })
 
 
