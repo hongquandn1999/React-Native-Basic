@@ -18,7 +18,7 @@ export default function App() {
 	return (
 		<View style={styles.screen}>
 			<CharacterInput onAddAnime={onPressName} />
-			<FlatList keyExtractor={(item, index) => item.id} data={anime} renderItem={itemData => <CharacterItem title={itemData.item.value} />} />
+			<FlatList keyExtractor={(item, index) => item.id} data={anime} renderItem={itemData => <CharacterItem title={itemData.item.value} onPressed={() => console.log('Press Active')} />} />
 
 
 		</View>

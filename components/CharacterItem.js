@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
 
 const CharacterItem = props => {
     return (
-        <View style={styles.listItem}>
-            <Text >{props.title}</Text>
-        </View>
+        <TouchableHighlight activeOpacity={0.8} onLongPress={props.onPressed} >
+            <View style={styles.listItem}>
+                <Text >{props.title}</Text>
+            </View>
+        </TouchableHighlight>
     )
 }
 
