@@ -1,23 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, TextInput, View, ScrollView, FlatList } from 'react-native';
+import CharacterItem from './components/CharacterItem'
+import CharacterInput from './components/CharacterInput'
 
 export default function App() {
+	const [character, setCharacter] = useState('')
+	const [anime, setAnime] = useState([])
+
+
+	const onPressName = characterTitle => {
+		setAnime(currentValue => [...currentValue, {
+			id: Math.random().toString(),
+			value: characterTitle
+		}]);
+	}
 	return (
-		<View style={styles.container}>
-			<Text>Open App.js to start working on your app!</Text>
-			<TextInput />
-			<Button title="ADD" />
-			<StatusBar style="auto" />
+		<View style={styles.screen}>
+			<CharacterInput onAddAnime={onPressName} />
+			<FlatList keyExtractor={(item, index) => item.id} data={anime} renderItem={itemData => <CharacterItem title={itemData.item.value} onPressed={() => console.log('Press Active')} />} />
+
+
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-});
+	screen: {
+		padding: 50
+	},
+
+
+})
+
+
