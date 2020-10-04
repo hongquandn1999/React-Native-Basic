@@ -15,10 +15,16 @@ export default function App() {
 			value: characterTitle
 		}]);
 	}
+
+	const removeAnime = characterId => {
+		setAnime(currentAnime => {
+			return currentAnime.filter((anime) => anime.id !== characterId)
+		})
+	}
 	return (
 		<View style={styles.screen}>
 			<CharacterInput onAddAnime={onPressName} />
-			<FlatList keyExtractor={(item, index) => item.id} data={anime} renderItem={itemData => <CharacterItem title={itemData.item.value} onPressed={() => console.log('Press Active')} />} />
+			<FlatList keyExtractor={(item, index) => item.id} data={anime} renderItem={itemData => <CharacterItem id={itemData.item.id} title={itemData.item.value} onDeleted={removeAnime} />} />
 
 
 		</View>

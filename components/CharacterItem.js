@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
 
 const CharacterItem = props => {
     return (
-        <TouchableHighlight activeOpacity={0.8} onLongPress={props.onPressed} >
+        <TouchableHighlight activeOpacity={0.8} onLongPress={props.onDeleted.bind(this, props.id)} >
             <View style={styles.listItem}>
                 <Text >{props.title}</Text>
             </View>
